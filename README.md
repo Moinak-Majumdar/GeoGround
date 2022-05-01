@@ -6,9 +6,9 @@ created using <strong>React , TailwindCss </strong> and<strong> Mui </strong>
 
 apis are from :
 
-OpenWeatherMap : https://openweathermap.org/ <br>
-IpGeoLocation : https://ipgeolocation.io/ <br>
-BigDataCloud: https://www.bigdatacloud.com/
+OpenWeatherMap : <a href='https://openweathermap.org/'>go</a> <br>
+IpGeoLocation : <a href='https://ipgeolocation.io/'>go</a> <br>
+BigDataCloud: <a href='https://www.bigdatacloud.com/'>go</a>
 
 
 ![Screenshot (16)](https://user-images.githubusercontent.com/99950805/165922552-d7c6ea21-fea9-4a53-a70b-f6aceacf4c5c.png)
