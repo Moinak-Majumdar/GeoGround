@@ -1,6 +1,6 @@
 GeoGround is <strong>PWA</strong> (progressive web app) to describe about place and weather 
 
-Deploy : <h2>https://moinak-geoground.netlify.app/ </h2>
+Deploy at netlify: <h2><a href='https://moinak-geoground.netlify.app/'>check</a> </h2>
 
 created using <strong>React , TailwindCss </strong> and<strong> Mui </strong>
 
