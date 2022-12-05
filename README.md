@@ -1,8 +1,8 @@
 GeoGround is <strong>PWA</strong> (progressive web app) to describe about place and weather 
 
-Deploy : <h2>https://moinak-geoground.netlify.app/ </h2>
+Deploy : <h2>https://geoground.vercel.app/ </h2>
 
-created using <strong>React , TailwindCss </strong> and<strong> Mui </strong>
+created using <strong>React, Express , TailwindCss </strong> and<strong> Mui </strong>
 
 apis are from :
 
