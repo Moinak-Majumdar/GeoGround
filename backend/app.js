@@ -39,7 +39,7 @@ app.get('/getInfo', async (req, res) => {
         
     try {
         let Weather = null
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${process.env.WEATHER_KEY1}&unit=metric`)
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${process.env.WEATHER_KEY1}&units=metric`)
 
         const data = await res.json()
 
