@@ -24,7 +24,7 @@ const Home = () => {
 
     const option = {
         method: 'GET',
-        url: `http://localhost:5500/getInfo?place=${args}`,
+        url: `https://geoground-api-sever.onrender.com/getInfo?place=${args}`,
     }
     await axios.request(option).then((res) =>{
         const data = res.data;
