@@ -13,14 +13,16 @@ const allowedHost = [
     // 'localhost:3000',
     // 'localhost:5500',
     'geoground.vercel.app/',
-    'geo-ground-moinak05.vercel.app/'
+    'geo-ground-moinak05.vercel.app/',
+    'geoground-api-sever.onrender.com/'
 ];
 
 const allowedOrigins = [
     // 'http://localhost:3000',
     // 'http://localhost:5500',
     'https://geoground.vercel.app/',
-    'https://geo-ground-moinak05.vercel.app/'
+    'https://geo-ground-moinak05.vercel.app/',
+    'https://geoground-api-sever.onrender.com/'
 ];
 
 const __filename = fileURLToPath(import.meta.url);
