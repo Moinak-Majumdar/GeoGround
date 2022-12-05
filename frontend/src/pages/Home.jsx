@@ -23,25 +23,25 @@ const Home = () => {
     IsLoading(true)
 
     const option = {
-        method: 'GET',
-        url: `https://geoground-api-sever.onrender.com/getInfo?place=${args}`,
+      method: 'GET',
+      url: `https://geoground-api-sever.onrender.com/getInfo?place=${args}`,
     }
-    await axios.request(option).then((res) =>{
-        const data = res.data;
+    await axios.request(option).then((res) => {
+      const data = res.data;
 
-        if(data.error) {
-            setError(true)
-            IsLoading(true)
-        } else {
-            setError(false)
-            IsLoading(false)
-            setLocation(data.location)
-            setTime(data.time)
-            setWeather(data.weather)
-        }
-    }).catch((errors) => {
+      if (data.error) {
+        setError(true)
+        IsLoading(true)
+      } else {
         setError(false)
-        console.log(errors)
+        IsLoading(false)
+        setLocation(data.location)
+        setTime(data.time)
+        setWeather(data.weather)
+      }
+    }).catch((errors) => {
+      setError(false)
+      console.log(errors)
     })
   }
 
@@ -62,10 +62,10 @@ const Home = () => {
     setPlace(args)
     getPlace(args)
   }
-  if(error) {
-    return(
+  if (error) {
+    return (
       <>
-        <PlaceError place={place} search={newPlace}/>
+        <PlaceError place={place} search={newPlace} />
       </>
     )
   }
@@ -75,7 +75,7 @@ const Home = () => {
       <section className="flex justify-center mt-16 md:mt-24 p-4 h-auto">
         <div className="flex-1 h-full max-w-4xl mx-auto shadow-2xl shadow-slate-900 rounded-3xl overflow-hidden">
           <div className="flex flex-col md:flex-row">
-            <div className={`${!loading && time.img} imgBg h-auto md:w-1/2`}>
+            <div className={`${loading ? 'day' : time.img} imgBg h-auto md:w-1/2`}>
               <div className='w-full flex justify-center'>
                 <form className='w-72 bg-slate-200 bg-opacity-80 mt-8 rounded-lg flex justify-center py-2 px-3 shadow-2xl shadow-slate-500'
                   onSubmit={handleSubmit}>
@@ -96,7 +96,7 @@ const Home = () => {
                 </form>
               </div>
               <div className='flex items-center justify-center min-h-[600px] p-6 sm:p-12'>
-                {loading ? <OtherSideLoader/> :<ImgSide
+                {loading ? <OtherSideLoader /> : <ImgSide
                   day={time.day}
                   dayNight={time.dayNight}
                   timezone={time.timezone}
@@ -106,7 +106,7 @@ const Home = () => {
               </div>
             </div>
             <div className='flex justify-center items-center min-h-[600px] p-6 sm:p-12 md:w-1/2 bg-gradient-to-b from-zinc-200 to-slate-400'>
-              {loading ? <ImgSideLoader/> : <OtherSide
+              {loading ? <ImgSideLoader /> : <OtherSide
                 dayNight={time.dayNight}
                 weather={weather}
               />}
