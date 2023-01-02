@@ -67,7 +67,7 @@ const OtherSideLoader = () => {
                     }}
                 />
             </div>
-            <h1 className="mt-20 text-3xl">Loading</h1>
+            <h1 className="mt-20 text-3xl text-gray-200">Loading</h1>
         </section>
     )
 }
