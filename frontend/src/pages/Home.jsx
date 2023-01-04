@@ -12,7 +12,7 @@ import PlaceError from '../components/PlaceError';
 
 const Home = () => {
 
-  const [place, setPlace] = useState('palta')
+  const [place, setPlace] = useState('london')
   const [location, setLocation] = useState(null)
   const [weather, setWeather] = useState(null)
   const [time, setTime] = useState(null)
@@ -46,7 +46,7 @@ const Home = () => {
   }
 
   useEffect(() => {
-    getPlace('palta')
+    getPlace('london')
   }, [])
 
 
