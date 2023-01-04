@@ -11,8 +11,8 @@ const port = process.env.PORT || 5500
 
 
 const allowedOrigins = [
-    //'http://localhost:3000',
-    //'http://localhost:5500',
+    'http://localhost:3000',
+    'http://localhost:5500',
     'https://geoground.vercel.app',
     'https://geo-ground-moinak05.vercel.app',
     'https://geoground-api-sever.onrender.com'
