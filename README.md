@@ -1,4 +1,19 @@
-GeoGround is <strong>PWA</strong> (progressive web app) to describe about place and weather 
+<h4>
+
+    Welcome to GeoGround, the ultimate destination for all your travel and weather needs! 
+
+    If you're planning a trip or just curious about a specific location, our app has got you covered. Simply enter the name of the place you want to know more about and get all the information you need at your fingertips. 
+
+    Our app provides detailed information about the place, including its economy, position, and current weather. This allows you to make informed decisions about your travel plans and ensure that you have a comfortable and enjoyable trip.
+
+    One of the key features of our app is the ability to see the current weather of the place you're interested in. This can be especially useful if you're planning a trip to a location with extreme weather conditions, such as a tropical paradise or a snowy mountain range.
+
+    In addition to the current weather, our app also provides information about the economy and position of the place you're interested in. This can help you to know about the locality, and make the most of your trip.
+
+    Overall, our app is the perfect companion for travelers and weather enthusiasts alike. Whether you're planning a trip or just curious about a specific location, our app has all the information you need to make informed decisions and have a great time.
+</h4>
+<br/>
+<h3><b>Key Feature :</b> GeoGround is <strong>PWA</strong> (progressive web app) so it is installable in any device with browser.</h3>
 
 ## Check <a href='https://geoground.vercel.app/'>Live</a>
 

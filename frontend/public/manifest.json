@@ -1,55 +1,31 @@
 {
   "short_name": "GeoGround",
   "name": "GeoGround",
-  "description": "weather cum place app",
+  "description": "Welcome to GeoGround, the ultimate destination for all your travel and weather needs! If you're planning a trip or just curious about a specific location, our app has got you covered. Simply enter the name of the place you want to know more about and get all the information you need at your fingertips. Our app provides detailed information about the place, including its economy, position, and current weather. This allows you to make informed decisions about your travel plans and ensure that you have a comfortable and enjoyable trip.",
   "icons": [
-    {
-      "src": "icon/logo32.png",
-      "type": "image/png",
-      "sizes": "32x32",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon/logo36.png",
-      "type": "image/png",
-      "sizes": "36x36",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon/logo48.png",
-      "type": "image/png",
-      "sizes": "48x48",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon/logo72.png",
-      "type": "image/png",
-      "sizes": "72x72",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon/logo96.png",
-      "type": "image/png",
-      "sizes": "96x96",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon/logo144.png",
-      "type": "image/png",
-      "sizes": "144x144",
-      "purpose": "any maskable"
-    },
     {
       "src": "icon/logo192.png",
       "type": "image/png",
       "sizes": "192x192",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     },
     {
       "src": "icon/logo512.png",
       "type": "image/png",
       "sizes": "512x512",
-      "purpose": "any maskable"
+      "purpose": "maskable"
+    },
+    {
+      "src": "icon/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "icon/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ],
   "start_url": ".",
