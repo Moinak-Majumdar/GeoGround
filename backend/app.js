@@ -121,12 +121,12 @@ app.get('/getInfo', async (req, res) => {
 
             const data1 = await options1.json()
 
-            const { name: country, description: country_des } = data1.localityInfo.administrative[0]
-            const { name: state, description: state_des } = data1.localityInfo.administrative[1]
-            const { name: county, description: county_des } = data1.localityInfo.administrative[2]
+            const { localityInfo } = data1;
+            const { administrative } = localityInfo;
+            const { name: country, description: country_des } = administrative[0]
+            const { name: state, description: state_des } = administrative[1]
+            const { name: county, description: county_des } = administrative[2]
             const locality = data1.locality;
-
-            Location = { country, country_des, state, state_des, county, county_des, locality }
 
             const data2 = await options2.json()
 
@@ -136,7 +136,7 @@ app.get('/getInfo', async (req, res) => {
             const dialCode = data2.callingCode;
             const isoName = data2.isoNameFull;
 
-            Location = { ...Location, lang, currency, currency_code, incomeLevel, dialCode, isoName }
+            Location = { country, country_des, state, state_des, county, county_des, locality, lang, currency, currency_code, incomeLevel, dialCode, isoName }
 
             return Location
         } catch (error) {
