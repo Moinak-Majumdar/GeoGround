@@ -34,9 +34,9 @@ app.get('/getInfo', async (req, res) => {
         res.setHeader('Access-Control-Allow-Origin', origin);
     }
     const place = req.query.place;
-    
+
     let Response = {};
-        
+
     try {
         let Weather = null
         const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${process.env.WEATHER_KEY1}&units=metric`)
@@ -61,10 +61,10 @@ app.get('/getInfo', async (req, res) => {
 
     } catch (Err) {
         console.log(Err)
-        Response = { ...Response, weather: null}
+        Response = { ...Response, weather: null }
     } finally {
-        if(Response.location === null || Response.time === null || Response.weather === null) {
-            res.send({ error: 'place not found'})
+        if (Response.location === null || Response.time === null || Response.weather === null) {
+            res.send({ error: 'place not found' })
         } else {
             res.send(Response)
         }
@@ -101,7 +101,7 @@ app.get('/getInfo', async (req, res) => {
 
             Time = { timezone, gmt, day, img, dayNight }
 
-            return Time      
+            return Time
         }
         catch (err) {
             console.log(err)
@@ -112,23 +112,21 @@ app.get('/getInfo', async (req, res) => {
 
     async function getLocation(country_code, lat, long) {
 
-        let Location = null
+        let Location = null;
 
         try {
-            const options1 = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`)
+            const api1 = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`)
 
-            const options2 = await fetch(`https://api.bigdatacloud.net/data/country-info?code=${country_code}&key=${process.env.COUNTRY_KEY1}&localityLanguage=en`)
+            const api2 = await fetch(`https://api.bigdatacloud.net/data/country-info?code=${country_code}&key=${process.env.COUNTRY_KEY1}&localityLanguage=en`)
 
-            const data1 = await options1.json()
+            const data1 = await api1.json();
+            const data2 = await api2.json();
 
-            const { localityInfo } = data1;
-            const { administrative } = localityInfo;
+            const { administrative } = data1.localityInfo;
             const { name: country, description: country_des } = administrative[0]
             const { name: state, description: state_des } = administrative[1]
             const { name: county, description: county_des } = administrative[2]
             const locality = data1.locality;
-
-            const data2 = await options2.json()
 
             const { nativeName: lang } = data2.isoAdminLanguages[0];
             const { name: currency, code: currency_code } = data2.currency;
@@ -136,7 +134,7 @@ app.get('/getInfo', async (req, res) => {
             const dialCode = data2.callingCode;
             const isoName = data2.isoNameFull;
 
-            Location = { country, country_des, state, state_des, county, county_des, locality, lang, currency, currency_code, incomeLevel, dialCode, isoName }
+            Location = { country, country_des, state, state_des, county, county_des, locality, lang, currency, currency_code, incomeLevel, dialCode, isoName}
 
             return Location
         } catch (error) {

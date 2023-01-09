@@ -1,6 +1,5 @@
 import { TextField, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import '../css/home.css'
 import { ImgSide } from '../components/ImgSide';
@@ -22,13 +21,7 @@ const Home = () => {
   async function getPlace(args) {
     IsLoading(true)
 
-    const option = {
-      method: 'GET',
-      url: `https://geoground-api-sever.onrender.com/getInfo?place=${args}`,
-    }
-    await axios.request(option).then((res) => {
-      const data = res.data;
-
+    fetch(`https://geoground-api-sever.onrender.com/getInfo?place=${args}`).then((data) => {
       if (data.error) {
         setError(true)
         IsLoading(true)
