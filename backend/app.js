@@ -122,11 +122,12 @@ app.get('/getInfo', async (req, res) => {
             const data1 = await api1.json();
             const data2 = await api2.json();
 
-            const { administrative } = data1.localityInfo;
+            const { locality, localityInfo } = data1;
+            const { administrative } = localityInfo;
             const { name: country, description: country_des } = administrative[0]
             const { name: state, description: state_des } = administrative[1]
             const { name: county, description: county_des } = administrative[2]
-            const locality = data1.locality;
+            
 
             const { nativeName: lang } = data2.isoAdminLanguages[0];
             const { name: currency, code: currency_code } = data2.currency;
