@@ -55,7 +55,7 @@ app.get('/getInfo', async (req, res) => {
         Weather = { mood, des, temp, temp_min, temp_max, feels_like, pressure, humidity, visibility, speed, deg, clouds, sunrise, sunset, lat, lon }
 
         const time = await getTime(lat, lon);
-        const location = await getLocation(country_code, lat, lon)
+        const location = await getLocation(country_code, lat, lon);
 
         Response = { time, location, weather: Weather }
 
