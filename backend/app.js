@@ -11,8 +11,8 @@ const port = process.env.PORT || 5500
 
 
 const allowedOrigins = [
-    // 'http://localhost:3000',
-    // 'http://localhost:5500',
+    'http://localhost:3000',
+    'http://localhost:5500',
     'https://geoground.vercel.app',
     'https://geo-ground-moinak05.vercel.app',
     'https://geoground-api-sever.onrender.com'
@@ -115,19 +115,18 @@ app.get('/getInfo', async (req, res) => {
         let Location = null;
 
         try {
-            const api1 = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`)
-
-            const api2 = await fetch(`https://api.bigdatacloud.net/data/country-info?code=${country_code}&key=${process.env.COUNTRY_KEY1}&localityLanguage=en`)
+            const api1 = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${long}&localityLanguage=en`);
 
             const data1 = await api1.json();
-            const data2 = await api2.json();
-
+    
             const { locality, localityInfo } = data1;
-            const { administrative } = localityInfo;
-            const { name: country, description: country_des } = administrative[0]
-            const { name: state, description: state_des } = administrative[1]
-            const { name: county, description: county_des } = administrative[2]
+            const { name: country, description: country_des } = localityInfo.administrative[0]
+            const { name: state, description: state_des } = localityInfo.administrative[1]
+            const { name: county, description: county_des } = localityInfo.administrative[2]
             
+            const api2 = await fetch(`https://api.bigdatacloud.net/data/country-info?code=${country_code}&key=${process.env.COUNTRY_KEY1}&localityLanguage=en`);
+
+            const data2 = await api2.json();
 
             const { nativeName: lang } = data2.isoAdminLanguages[0];
             const { name: currency, code: currency_code } = data2.currency;
