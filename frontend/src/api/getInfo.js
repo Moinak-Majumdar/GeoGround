@@ -1,55 +1,20 @@
-import express from 'express';
-import path from 'path'
-import { fileURLToPath } from 'url';
-import fetch from "node-fetch";
-import * as dotenv from 'dotenv'
-
-
-const app = express()
-dotenv.config()
-const port = process.env.PORT || 5500
-
-
-const allowedOrigins = [
-    // 'http://localhost:3000',
-    // 'http://localhost:5500',
-    'https://geoground.vercel.app',
-    'https://geo-ground-moinak05.vercel.app',
-    'https://geoground-api-sever.onrender.com'
-];
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.get('/', (req, res) => {
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-        res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    res.sendFile(path.join(__dirname, '/welcome.html'))
-})
-
-app.get('/getInfo', async (req, res) => {
-    const origin = req.headers.origin;
-    if (allowedOrigins.includes(origin)) {
-        res.setHeader('Access-Control-Allow-Origin', origin);
-    }
-    const place = req.query.place;
-
+async function getInfo(place) {
+    
     let Response = {};
 
     try {
         let Weather = null
-        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${process.env.WEATHER_KEY1}&units=metric`)
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${process.env.REACT_APP_WEATHER_KEY1}&units=metric`)
 
         const data = await res.json()
 
-        const { lon, lat } = data.coord;
-        const { main: mood, description: des } = data.weather[0];
-        const { temp, temp_min, temp_max, pressure, humidity, feels_like } = data.main
-        let visibility = data.visibility;
-        const { speed, deg } = data.wind;
+        let { coord, main, weather, visibility, sys, wind } = data
+        const { lon, lat } = coord;
+        const { main: mood, description: des } = weather[0];
+        const { temp, temp_min, temp_max, pressure, humidity, feels_like } = main
+        const { speed, deg } = wind;
         const clouds = data.clouds.all;
-        const { sunrise, sunset, country: country_code } = data.sys;
+        const { sunrise, sunset, country: country_code } = sys;
         visibility >= '10000' ? visibility = '>10' : visibility = visibility / 1000;
 
         Weather = { mood, des, temp, temp_min, temp_max, feels_like, pressure, humidity, visibility, speed, deg, clouds, sunrise, sunset, lat, lon }
@@ -64,9 +29,9 @@ app.get('/getInfo', async (req, res) => {
         Response = { ...Response, weather: null }
     } finally {
         if (Response.location === null || Response.time === null || Response.weather === null) {
-            res.send({ error: 'place not found' })
+            return { error: 'place not found' }
         } else {
-            res.send(Response)
+            return Response
         }
     }
 
@@ -74,7 +39,7 @@ app.get('/getInfo', async (req, res) => {
 
         let Time = null
         try {
-            const res = await fetch(`https://api.ipgeolocation.io/timezone?lat=${lat}&long=${long}&apiKey=${process.env.TIME_KEY1}`)
+            const res = await fetch(`https://api.ipgeolocation.io/timezone?lat=${lat}&long=${long}&apiKey=${process.env.REACT_APP_TIME_KEY1}`)
 
             const data = await res.json()
 
@@ -126,7 +91,7 @@ app.get('/getInfo', async (req, res) => {
             const { name: state, description: state_des } = d2;
             const { name: county, description: county_des } = d3;
             
-            const api2 = await fetch(`https://api.bigdatacloud.net/data/country-info?code=${country_code}&key=${process.env.COUNTRY_KEY1}&localityLanguage=en`);
+            const api2 = await fetch(`https://api.bigdatacloud.net/data/country-info?code=${country_code}&key=${process.env.REACT_APP_COUNTRY_KEY1}&localityLanguage=en`);
 
             const data2 = await api2.json();
 
@@ -145,6 +110,6 @@ app.get('/getInfo', async (req, res) => {
         }
 
     }
-})
+}
 
-app.listen(port)
+export default getInfo

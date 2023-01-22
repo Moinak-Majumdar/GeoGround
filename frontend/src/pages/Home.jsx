@@ -8,6 +8,7 @@ import { Svg1, Svg2 } from '../svg/svg';
 import OtherSideLoader from '../components/OtherSideLoader';
 import ImgSideLoader from '../components/ImgSideLoader';
 import PlaceError from '../components/PlaceError';
+import getInfo from '../api/getInfo';
 
 const Home = () => {
 
@@ -21,8 +22,8 @@ const Home = () => {
   const getPlace =  async (args) => {
     IsLoading(true)
     // http://localhost:5500/getInfo?place=palta
-    const api  = await fetch(`https://geoground-api-sever.onrender.com/getInfo?place=${args}`)
-    const data = await api.json();
+    // const api  = await fetch(`https://geoground-api-sever.onrender.com/getInfo?place=${args}`)
+    const data = await getInfo(args)
       if (!data.error) {
         setError(false)
         IsLoading(false)
