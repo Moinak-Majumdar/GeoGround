@@ -5,7 +5,6 @@ async function getInfo(place) {
     try {
         let Weather = null
         const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${process.env.REACT_APP_WEATHER_KEY1}&units=metric`)
-
         const data = await res.json()
 
         let { coord, main, weather, visibility, sys, wind } = data

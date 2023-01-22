@@ -11,9 +11,8 @@ Welcome to GeoGround, the ultimate destination for all your travel and weather n
 
 ## Check <a href='https://geoground.vercel.app/'>Live</a>
 
-created using <strong>React, Express , TailwindCss </strong> and<strong> Mui </strong>
-## Custom rest api are build with all following api facilities
-## Link : <a href='https://geoground-api-sever.onrender.com/getInfo?place=london'>Current weather at London</a> 
+created using <strong>React, Framer Motion , TailwindCss </strong> and<strong> Mui </strong>
+#
 
 apis are from :
 
