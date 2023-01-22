@@ -18,34 +18,31 @@ const Home = () => {
   const [error, setError] = useState(false)
   const [loading, IsLoading] = useState(true)
 
-  async function getPlace(args) {
+  const getPlace =  async (args) => {
     IsLoading(true)
-
-    fetch(`https://geoground-api-sever.onrender.com/getInfo?place=${args}`).then((data) => {
-      if (data.error) {
-        setError(true)
-        IsLoading(true)
-      } else {
+    // http://localhost:5500/getInfo?place=palta
+    const api  = await fetch(`https://geoground-api-sever.onrender.com/getInfo?place=${args}`)
+    const data = await api.json();
+      if (!data.error) {
         setError(false)
         IsLoading(false)
         setLocation(data.location)
         setTime(data.time)
         setWeather(data.weather)
+      } else {
+        setError(true)
+        IsLoading(true)
       }
-    }).catch((errors) => {
-      setError(false)
-      console.log(errors)
-    })
   }
 
   useEffect(() => {
     getPlace('palta')
   }, [])
 
-
   function handleSubmit(e) {
     e.preventDefault();
     IsLoading(true)
+    setError(false)
     getPlace(place)
   }
 

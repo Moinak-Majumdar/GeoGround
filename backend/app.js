@@ -11,8 +11,8 @@ const port = process.env.PORT || 5500
 
 
 const allowedOrigins = [
-    'http://localhost:3000',
-    'http://localhost:5500',
+    // 'http://localhost:3000',
+    // 'http://localhost:5500',
     'https://geoground.vercel.app',
     'https://geo-ground-moinak05.vercel.app',
     'https://geoground-api-sever.onrender.com'
@@ -54,8 +54,8 @@ app.get('/getInfo', async (req, res) => {
 
         Weather = { mood, des, temp, temp_min, temp_max, feels_like, pressure, humidity, visibility, speed, deg, clouds, sunrise, sunset, lat, lon }
 
-        const time = await getTime(lat, lon);
         const location = await getLocation(country_code, lat, lon);
+        const time = await getTime(lat, lon);
 
         Response = { time, location, weather: Weather }
 
@@ -120,9 +120,11 @@ app.get('/getInfo', async (req, res) => {
             const data1 = await api1.json();
     
             const { locality, localityInfo } = data1;
-            const { name: country, description: country_des } = localityInfo.administrative[0]
-            const { name: state, description: state_des } = localityInfo.administrative[1]
-            const { name: county, description: county_des } = localityInfo.administrative[2]
+            const { administrative } = localityInfo;
+            const [ d1, d2, d3 ] = administrative;
+            const { name: country, description: country_des } = d1;
+            const { name: state, description: state_des } = d2;
+            const { name: county, description: county_des } = d3;
             
             const api2 = await fetch(`https://api.bigdatacloud.net/data/country-info?code=${country_code}&key=${process.env.COUNTRY_KEY1}&localityLanguage=en`);
 
